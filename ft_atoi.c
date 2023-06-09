@@ -6,43 +6,33 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:56:39 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/08 18:59:52 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/06/09 15:57:54 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_isspace(char chr)
-{
-	if ((chr >= 9 && chr <= 13) || chr == ' ')
-		return (1);
-	return (0);
-}
-
 int	ft_atoi(const char *str)
 {
-	unsigned long	ret_val;
-	int				index;
-	int				polarity;
+	int				i;
+	int				neg;
+	long int		ret;
 
-	polarity = 1;
-	index = 0;
-	if (*str == '\0')
-		return (0);
-	while (ft_isspace(str[index]))
-		index++;
-	if (str[index] == '-' || str[index] == '+')
+	ret = 0;
+	neg = 1;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (str[index] == '-')
-			polarity *= -1;
-		index++;
+		if (str[i] == '-')
+			neg = -1;
+		i++;
 	}
-	ret_val = 0;
-	while (str[index] >= '0' && str[index] <= '9')
-		ret_val = (ret_val * 10) + (str[index++] - '0');
-	if (ret_val > LONG_MAX && polarity == -1)
-		return (0);
-	if (ret_val > LONG_MAX && polarity == 1)
-		return (-1);
-	return (ret_val * polarity);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		ret = ret * 10 + (str[i] - 48);
+		i++;
+	}
+	return (ret * neg);
 }
