@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 21:28:57 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/22 18:49:47 by ctasar           ###   ########.fr       */
+/*   Created: 2023/06/22 18:57:21 by ctasar            #+#    #+#             */
+/*   Updated: 2023/06/22 19:34:31 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*substr;
 	int		i;
 	int		j;
+	char	*new_str;
 
-	if (strlen(s) == 0 || len == 0)
-		return (strdup(""));
-	i = 0;
-	while (i < len && s[i + start])
-		i++;
-	substr = (char *)malloc(len);
-	j = 0;
-	if (!substr)
+	if (!s1 || !s2)
 		return (NULL);
-
-	while (j < i)
+	new_str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		substr[j] = s[j + start];
+		new_str[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		new_str[i + j] = s2[j];
 		j++;
 	}
-	printf("%s", substr);
-	return (substr);
-
+	new_str[i + j] = '\0';
+	return (new_str);
 }
 
 int main(int argc, char const *argv[])
 {
-	char *a = "abcdesfghijk";
-	ft_substr(a, 0, 13);
+	ft_strjoin("abc","def");
 	return 0;
 }
