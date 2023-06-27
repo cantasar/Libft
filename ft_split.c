@@ -1,46 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 21:28:57 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/24 18:18:09 by ctasar           ###   ########.fr       */
+/*   Created: 2023/06/25 17:28:01 by ctasar            #+#    #+#             */
+/*   Updated: 2023/06/27 16:57:02 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int	word_count(char const *s, char c)
 {
-	char	*substr;
-	int		i;
-	int		j;
+	int	i;
+	int	count;
 
-	if (ft_strlen(s) == 0 || len == 0)
-		return (strdup(""));
 	i = 0;
-	while (i < len && s[i + start])
+	count = 0;
+	while (s[i] && s[i] == c)
 		i++;
-	substr = (char *)malloc(len);
-	j = 0;
-	if (!substr)
-		return (NULL);
-
-	while (j < i)
+	if (s[0] != c && s[0])
+		count++;
+	while (s[i])
 	{
-		substr[j] = s[j + start];
-		j++;
+		if (s[i] != '\0' && s[i - 1] == c)
+			count++;
+		i++;
 	}
-	printf("%s", substr);
-	return (substr);
+	printf("%d", count);
+	return (count);
+}
 
+char	**ft_split(char const *s, char c)
+{
+	char	**new_str;
+
+	//**new_str = (char **)malloc(word_count(s, c) * sizeof(char));
+	word_count(s, c);
+	return (0);
 }
 
 int main(int argc, char const *argv[])
 {
-	char *a = "abcdesfghijk";
-	ft_substr(a, 0, 13);
+	ft_split("-aaaa-aaa-aaaa-a-", '-');
 	return 0;
 }
