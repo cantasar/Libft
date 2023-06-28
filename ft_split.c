@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 17:28:01 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/28 14:47:11 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/06/28 15:04:23 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char	**ft_split(char const *s, char c)
 	if (!new_str)
 		return (NULL);
 	i = 0;
-	while (i++ < word_count(s, c))
+	while (i < word_count(s, c))
 	{
 		while (s[j] && s[j] == c)
 			j++;
@@ -70,15 +70,15 @@ char	**ft_split(char const *s, char c)
 				new_str[i][k++] = s[j++];
 			j++;
 		}
-		printf("%d %s\n", i, new_str[i]);
+		i++;
 	}
 	new_str[i] = NULL;
-	printf("%d %s\n", i, new_str[i]);
-	return (0);
+	return (new_str);
 }
 
 int	main(void)
 {
-	ft_split("aaaa----aaa-----aa-a----aaaa-aaa---aa----a", '-');
+	char **p = ft_split("aaaa----aaa-----aa-a----aaaa-aaa---aa----a", '-');
+	printf("%s\n", p[0]);
 	return 0;
 }
