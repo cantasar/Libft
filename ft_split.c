@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 17:28:01 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/28 15:04:23 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/06/28 18:55:33 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ char	**ft_split(char const *s, char c)
 	int		tmp;
 	char	**new_str;
 
+	if (!s || !c)
+		return (0);
 	new_str = (char **)malloc(word_count(s, c) * sizeof(char *) + 1);
 	if (!new_str)
 		return (NULL);
