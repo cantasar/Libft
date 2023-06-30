@@ -6,13 +6,13 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:58:22 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/07 11:59:06 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/06/29 23:38:20 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 65 && c <= 90)
 		return (c + 32);
