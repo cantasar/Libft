@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:51:43 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/08 11:29:28 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/03 12:24:30 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,4 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		i++;
 	}
 	return (0);
-}
-
-int main(int argc, char const *argv[])
-{
-	char a[] = "abca";
-	char b[] = "abcz";
-	printf("%d\n", ft_memcmp(a,b,6));
-	printf("%d", memcmp(a,b,6));
-	return 0;
 }

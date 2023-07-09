@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:28:57 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/24 18:18:09 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/09 20:24:43 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,27 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*substr;
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
-	if (ft_strlen(s) == 0 || len == 0)
-		return (strdup(""));
-	i = 0;
-	while (i < len && s[i + start])
-		i++;
-	substr = (char *)malloc(len);
-	j = 0;
+	if (ft_strlen(s) == 0 || len == 0 || start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s))
+		len = ft_strlen(s);
+	substr = (char *)malloc((len + 1) * sizeof(char));
 	if (!substr)
 		return (NULL);
-
-	while (j < i)
+	i = start;
+	j = 0;
+	while (s[i])
 	{
-		substr[j] = s[j + start];
-		j++;
+		if (i < ft_strlen(s) && j < len)
+		{
+			substr[j] = s[i];
+			j++;
+		}
+		i++;
 	}
-	printf("%s", substr);
+	substr[j] = 0;
 	return (substr);
-
-}
-
-int main(int argc, char const *argv[])
-{
-	char *a = "abcdesfghijk";
-	ft_substr(a, 0, 13);
-	return 0;
 }

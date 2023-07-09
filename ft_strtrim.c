@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:36:36 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/25 17:48:09 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/07 10:00:50 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,18 @@ static int	check_s1(char c, char const *set)
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
-	int		start;
-	int		end;
-	int		i;
+	size_t	end;
 
-	if (strlen(s1) == 0 || set == 0)
+	if (!s1 || !set)
 		return (NULL);
-	start = 0;
-	while (s1[start] && check_s1(s1[start], set))
-		start++;
-	end = strlen(s1) - 1;
-	while (s1[end] && check_s1(s1[end], set))
+	while (check_s1(*s1, set) && *s1 != '\0')
+		s1++;
+	end = ft_strlen(s1);
+	while (check_s1(s1[end - 1], set) && end != 0)
 		end--;
-	str = (char *)malloc(end - start + 1);
-	if (!str)
+	str = (char *)malloc(sizeof(char) * (end + 1));
+	if (str == NULL)
 		return (NULL);
-	i = 0;
-	while (start <= end)
-		str[i++] = s1[start++];
-	str[i] = '\0';
+	ft_strlcpy(str, s1, end + 1);
 	return (str);
-}
-
-int main()
-{
-	char *a = "abcdef";
-    ft_strtrim("adebczzzzmaaaabcde", a);
-    return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 18:57:21 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/22 19:34:31 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/03 12:30:25 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	new_str[i + j] = '\0';
 	return (new_str);
-}
-
-int main(int argc, char const *argv[])
-{
-	ft_strjoin("abc","def");
-	return 0;
 }

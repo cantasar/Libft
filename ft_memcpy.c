@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 22:05:58 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/05 11:53:13 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/03 12:24:43 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,3 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		destc[n] = srcc[n];
 	return (dest);
 }
-
-int main(int argc, char const *argv[])
-{
-	char src[] = "abcd";
-	char dest[12];
-	ft_memcpy(dest,src,2);
-	printf("%s",dest);
-	return 0;
-}
-

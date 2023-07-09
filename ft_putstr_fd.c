@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 12:31:06 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/29 12:38:49 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/05 17:28:36 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	while (s)
+	int	i;
+
+	i = 0;
+	while (s[i])
 	{
-		write(fd, &s, 1);
-		*s++;
+		ft_putchar_fd(s[i], fd);
+		i++;
 	}
 }

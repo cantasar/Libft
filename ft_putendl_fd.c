@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 12:39:32 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/29 12:45:01 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/04 23:52:19 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	ft_putchar_fd(s, fd);
-	write(fd, '\n', 1);
+	if (s)
+		while (*s != '\0')
+			ft_putchar_fd(*s++, fd);
+	ft_putchar_fd('\n', fd);
 }

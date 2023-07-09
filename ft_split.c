@@ -6,81 +6,81 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/25 17:28:01 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/28 18:55:33 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/08 18:43:20 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	word_count(char const *s, char c)
+int pass_sep(char const *s, int i, int c)
 {
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (s[i] && s[i] == c)
-		i++;
-	if (s[0] != c && s[0])
-		count++;
-	while (s[i])
-	{
-		if (s[i] != c && s[i - 1] == c)
-			count++;
-		i++;
-	}
-	//printf("%s / word count %d\n", s, count);
-	return (count);
+    while (s[i] && s[i] == c)
+        i++;
+    return (i);
+}
+int pass_word(const char *s, int tmp, int c)
+{
+    while (s[tmp] && s[tmp] != c)
+        tmp++;
+    return (tmp);
+}
+static int  count_word(const char *s, char c)
+{
+    int i;
+    int count;
+    i = 0;
+    count = 0;
+    while (s[i])
+    {
+        i = pass_sep(s, i, c);
+        if (s[i] != c && s[i])
+        {
+            count++;
+            i = pass_word(s, i, c);
+        }
+    }
+    return (count);
 }
 
-static int	char_count(char const *s, char sep, int i)
+char    **ft_split(char const *s, char c)
 {
-	int	count;
-
-	count = 0;
-	while (s[i] && s[i] == sep)
-		i++;
-	while (s[i] && s[i++] != sep)
-		count++;
-	//printf("char count s %s sep %c int i %d  return-%d\n", s, sep, i, count);
-	return (count);
+    char    **list;
+    size_t  i;
+    size_t  tmp;
+    size_t  h;
+    size_t  word_count;
+    i = 0;
+    h = 0;
+    word_count = count_word(s, c);
+    list = (char **)malloc(sizeof(char *) * (count_word(s, c) + 1));
+    if (!list)
+        return (NULL);
+    while (s[i])
+    {
+        i = pass_sep(s, i, c);
+        tmp = i;
+        tmp = pass_word(s, tmp, c);
+        if (word_count == h)
+            break ;
+        list[h++] = ft_substr(s, i, tmp - i);
+        i = tmp;
+    }
+    list[h] = NULL;
+    return (list);
 }
 
-char	**ft_split(char const *s, char c)
-{
-	int		i;
-	int		j;
-	int		k;
-	int		tmp;
-	char	**new_str;
 
-	if (!s || !c)
-		return (0);
-	new_str = (char **)malloc(word_count(s, c) * sizeof(char *) + 1);
-	if (!new_str)
-		return (NULL);
-	i = 0;
-	while (i < word_count(s, c))
-	{
-		while (s[j] && s[j] == c)
-			j++;
-		if (s[j] && s[j] != c)
-		{
-			new_str[i] = (char *)malloc(char_count(s, c, j) * sizeof(char) + 1);
-			k = 0;
-			while (s[j] && s[j] != c)
-				new_str[i][k++] = s[j++];
-			j++;
-		}
-		i++;
-	}
-	new_str[i] = NULL;
-	return (new_str);
-}
 
+/*
 int	main(void)
 {
-	char **p = ft_split("aaaa----aaa-----aa-a----aaaa-aaa---aa----a", '-');
-	printf("%s\n", p[0]);
+	char **p = ft_split("lorem ipsumdolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse ", ' ');
+	int i = 0;
+
+	while (p[i])
+	{
+		printf("**%s**\n", p[i]);
+		i++;
+	}
 	return 0;
 }
+*/

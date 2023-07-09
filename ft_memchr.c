@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 18:51:20 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/08 12:41:09 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/04 12:01:13 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,18 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*temp;
+	unsigned const char	*str;
+	unsigned char		chr;
 
-	temp = (unsigned char *)s;
+	str = (unsigned const char *)s;
+	chr = (unsigned char)c;
 	while (n--)
 	{
-		if (*temp == (unsigned char)c)
-			return ((void *)(temp - 1));
-		temp++;
+		if (*(str) == chr)
+		{
+			return ((void *)str);
+		}
+		str++;
 	}
 	return (NULL);
-}
-
-int main(int argc, char const *argv[])
-{
-	const char	src[] = "abcdefg";
-	printf("%s\n", ft_memchr(src, 65, 3));
-	printf("%s\n", memchr(src, 65, 3));
-	return 0;
 }

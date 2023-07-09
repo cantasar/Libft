@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 14:35:41 by ctasar            #+#    #+#             */
-/*   Updated: 2023/06/05 11:53:09 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/08 19:11:50 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memset(void *s, int c, size_t n)
 
 	i = 0;
 	buc = (char *)s;
-	while (i < n)
+	while (n--)
 	{
 		buc[i] = c;
 		i++;
