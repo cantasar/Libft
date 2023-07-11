@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 14:25:25 by ctasar            #+#    #+#             */
-/*   Updated: 2023/07/11 18:46:17 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/11 14:25:44 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,3 @@ char	**ft_split(char const *s, char c)
 	list[h] = NULL;
 	return (list);
 }
-int main(int argc, char const *argv[])
-{
-	char **kelime = ft_split("Ali Eve Gitti", ' ');
-	int i = 0;
-	while (kelime[i])
-	{	
-		printf("%s\n", kelime[i]);
-		i++;
-	}
-	
-	return 0;
-}
-

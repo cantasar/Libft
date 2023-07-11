@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 19:36:36 by ctasar            #+#    #+#             */
-/*   Updated: 2023/07/11 18:36:34 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/07 10:00:50 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ft_strlcpy(str, s1, end + 1);
 	return (str);
 }
-
-abcdefghjacb
-
-abc

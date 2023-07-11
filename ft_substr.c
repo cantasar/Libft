@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:28:57 by ctasar            #+#    #+#             */
-/*   Updated: 2023/07/11 18:33:10 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/09 20:24:43 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (len > ft_strlen(s))
 		len = ft_strlen(s);
 	substr = (char *)malloc((len + 1) * sizeof(char));
-	if (substr ==  NULL)
+	if (!substr)
 		return (NULL);
 	i = start;
 	j = 0;
@@ -39,5 +39,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substr[j] = 0;
 	return (substr);
 }
-
-      abcdefg
