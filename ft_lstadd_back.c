@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:55:03 by ctasar            #+#    #+#             */
-/*   Updated: 2023/07/05 20:20:50 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/07/11 13:16:35 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
+	ft_lstlast(*lst)->next = new;
 }
