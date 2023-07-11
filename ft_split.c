@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
-/*   ft_split.c										 :+:	  :+:	:+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: ctasar <ctasar@student.42.fr>			  +#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2023/06/25 17:28:01 by ctasar			#+#	#+#			 */
-/*   Updated: 2023/07/08 18:43:20 by ctasar		   ###   ########.fr	   */
-/*																			*/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/11 14:25:25 by ctasar            #+#    #+#             */
+/*   Updated: 2023/07/11 18:46:17 by ctasar           ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
@@ -72,3 +72,16 @@ char	**ft_split(char const *s, char c)
 	list[h] = NULL;
 	return (list);
 }
+int main(int argc, char const *argv[])
+{
+	char **kelime = ft_split("Ali Eve Gitti", ' ');
+	int i = 0;
+	while (kelime[i])
+	{	
+		printf("%s\n", kelime[i]);
+		i++;
+	}
+	
+	return 0;
+}
+
